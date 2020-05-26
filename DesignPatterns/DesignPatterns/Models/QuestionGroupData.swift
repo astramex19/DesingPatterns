@@ -31,7 +31,7 @@ extension QuestionGroup {
         let questions = [
             Question(prompt: "France", answer: "Paris", flagURL: URL(string: "https://www.countryflags.io/fr/shiny/64.png")),
             Question(prompt: "Italy", answer: "Rome", flagURL: URL(string: "https://www.countryflags.io/it/shiny/64.png")),
-            Question(prompt: "Crotia", answer: "Zagreb", flagURL: URL(string: "https://www.countryflags.io/hr/shiny/64.png")),
+            Question(prompt: "Croatia", answer: "Zagreb", flagURL: URL(string: "https://www.countryflags.io/hr/shiny/64.png")),
             Question(prompt: "Greece", answer: "Athens", flagURL: URL(string: "https://www.countryflags.io/gr/shiny/64.png")),
             Question(prompt: "Spain", answer: "Madrid", flagURL: URL(string: "https://www.countryflags.io/es/shiny/64.png"))
         ]
@@ -42,8 +42,8 @@ extension QuestionGroup {
     static func asianCountries() -> QuestionGroup {
         let questions = [
             Question(prompt: "China", answer: "Beijing", flagURL: URL(string: "https://www.countryflags.io/cn/shiny/64.png")),
-            Question(prompt: "Taiwan", answer: "Taipei", flagURL: URL(string: "https://www.countryflags.it/tw/shiny/64.png")),
-            Question(prompt: "Vietnam", answer: "Hanoi", flagURL: URL(string: "https://www.countryflags.hr/vn/shiny/64.png")),
+            Question(prompt: "Taiwan", answer: "Taipei", flagURL: URL(string: "https://www.countryflags.io/tw/shiny/64.png")),
+            Question(prompt: "Vietnam", answer: "Hanoi", flagURL: URL(string: "https://www.countryflags.io/vn/shiny/64.png")),
             Question(prompt: "Japan", answer: "Tokio", flagURL: URL(string: "https://www.countryflags.io/jp/shiny/64.png")),
             Question(prompt: "Korea", answer: "Seoul", flagURL: URL(string: "https://www.countryflags.io/kr/shiny/64.png"))
         ]
