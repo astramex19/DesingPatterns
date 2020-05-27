@@ -9,7 +9,7 @@
 import UIKit
 
 class SelectQuestionGroupViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -56,21 +56,19 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let viewController = segue.destination as? QuestionViewController else { return }
-        viewController.questionGroup = selectedQuestionGroup
+        viewController.questionStrategy = RandomQuestionStrategy(questionGroup: selectedQuestionGroup)
         viewController.delegate = self
     }
 }
 
 extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
     func questionViewController(_ viewController: QuestionViewController,
-                                didCancel questionGroup: QuestionGroup,
-                                at questionIndex: Int) {
+                                didCancel questionStrategy: QuestionStrategy){
         navigationController?.popToViewController(self, animated: true)
     }
-
+    
     func questionViewController(_ viewController: QuestionViewController,
-                                didComplete questionGroup: QuestionGroup) {
+                                didComplete questionStrategy: QuestionStrategy) {
         navigationController?.popToViewController(self, animated: true)
     }
-
 }
