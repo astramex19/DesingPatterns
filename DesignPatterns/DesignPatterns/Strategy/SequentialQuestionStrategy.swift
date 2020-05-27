@@ -42,6 +42,6 @@ class SequentialQuestionStrategy: QuestionStrategy {
     }
     
     func questionIndexTitle() -> String {
-        return "\(questionIndex + 1)\(questionGroup.questions.count)"
+        return "\(questionIndex + 1)/\(questionGroup.questions.count)"
     }
 }

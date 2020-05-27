@@ -20,20 +20,20 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionGroupCell" id="vHH-vA-LsH" customClass="QuestionGroupCell" customModule="DesignPatterns" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vHH-vA-LsH" id="GCi-hg-G57">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1w0-Zm-63b">
-                                                    <rect key="frame" x="20" y="11" width="341.5" height="21.5"/>
+                                                    <rect key="frame" x="20" y="11" width="341.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5u-nB-K4z">
-                                                    <rect key="frame" x="369.5" y="11" width="24.5" height="21.5"/>
+                                                    <rect key="frame" x="369.5" y="11" width="24.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -71,7 +71,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="alX-My-pXq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Question Group" id="Q2a-Kr-jED"/>
+                    <navigationItem key="navigationItem" title="Select Question Group" id="Q2a-Kr-jED">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_settings" id="qC4-c8-JKF">
+                            <connections>
+                                <segue destination="bml-N1-ctf" kind="show" id="2z8-iM-Y02"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="QlE-na-6yY" id="Crx-qn-LlP"/>
                     </connections>
@@ -79,6 +85,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kdH-JZ-lQq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-88" y="98"/>
+        </scene>
+        <!--App Settings-->
+        <scene sceneID="R4Y-XY-RCH">
+            <objects>
+                <tableViewController id="bml-N1-ctf" customClass="AppSettingsViewController" customModule="DesignPatterns" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z8A-Ia-0B0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="bml-N1-ctf" id="lq8-jz-a0D"/>
+                            <outlet property="delegate" destination="bml-N1-ctf" id="N4S-qb-Sby"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="App Settings" id="bmd-Uw-3Sz"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zgq-vE-eCK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-88" y="782"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -101,27 +126,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM6-Mn-Ln6">
-                                <rect key="frame" x="32" y="631.5" width="160" height="160"/>
+                                <rect key="frame" x="32" y="711.5" width="80" height="80"/>
                                 <state key="normal" image="ic_circle_x"/>
                                 <connections>
                                     <action selector="handleIncorrect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6v5-id-1Kc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhM-gf-6xb">
-                                <rect key="frame" x="222" y="631.5" width="160" height="160"/>
+                                <rect key="frame" x="302" y="711.5" width="80" height="80"/>
                                 <state key="normal" image="ic_circle_check"/>
                                 <connections>
                                     <action selector="handleCorrect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HfV-G5-8FX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNd-vr-Gji">
-                                <rect key="frame" x="102" y="799.5" width="20" height="38.5"/>
+                                <rect key="frame" x="62" y="799.5" width="20" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" red="0.98823529409999999" green="0.050980392159999999" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxT-MU-SSR">
-                                <rect key="frame" x="292" y="799.5" width="20" height="38.5"/>
+                                <rect key="frame" x="332" y="799.5" width="20" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.59607843140000005" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -191,6 +216,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oy9-Ay-GO7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yfn-Ok-YXd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -206,5 +232,6 @@
     <resources>
         <image name="ic_circle_check" width="80" height="80"/>
         <image name="ic_circle_x" width="80" height="80"/>
+        <image name="ic_settings" width="26" height="26"/>
     </resources>
 </document>
