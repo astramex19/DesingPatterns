@@ -11,21 +11,32 @@ import UIKit
 class SelectQuestionGroupViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            tableView.tableFooterView = UIView()
-        }
-    }
+    @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
     let appSettings = AppSettings.shared
-    let questionGroups = QuestionGroup.allGroups()
-    private var selectedQuestionGroup: QuestionGroup!
+
+    private let questionGroupCaretaker = QuestionGroupCaretaker()
+    private var questionGroups: [QuestionGroup] {
+      return questionGroupCaretaker.questionGroups
+    }
+
+    private var selectedQuestionGroup: QuestionGroup! {
+      get { return questionGroupCaretaker.selectedQuestionGroup }
+      set { questionGroupCaretaker.selectedQuestionGroup = newValue }
+    }
     
     // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         deselectTableViewCells()
+        printScoresToConsole()
+    }
+    
+    private func printScoresToConsole() {
+      questionGroups.forEach {
+        print("\($0.title): correctCount: \($0.score.correctCount), incorrectCount: \($0.score.incorrectCount)")
+      }
     }
     
     private func deselectTableViewCells() {
@@ -57,7 +68,7 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let viewController = segue.destination as? QuestionViewController else { return }
-        viewController.questionStrategy = appSettings.questionStrategy(for: selectedQuestionGroup)
+        viewController.questionStrategy = appSettings.questionStrategy(for: questionGroupCaretaker)
         viewController.delegate = self
     }
 }

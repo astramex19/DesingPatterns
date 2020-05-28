@@ -8,8 +8,14 @@
 
 import UIKit
 
-struct Question {
+class Question: Codable {
     let prompt: String
-    let answer: String?
+    let answer: String
     let flagURL: URL?
+    
+    init(prompt: String, answer: String, flagURL: URL?) {
+      self.answer = answer
+      self.flagURL = flagURL
+      self.prompt = prompt
+    }
 }

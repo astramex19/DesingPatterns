@@ -8,51 +8,12 @@
 
 import GameplayKit.GKRandomSource
 
-class RandomQuestionStrategy: QuestionStrategy {
+class RandomQuestionStrategy: BaseQuestionStrategy {
     
-    // MARK: - Properties
-    var correctCount: Int = 0
-    var incorrectCount: Int = 0
-    private let questionGroup: QuestionGroup
-    private var questionIndex = 0
-    private let questions: [Question]
-    
-    init(questionGroup: QuestionGroup) {
-        self.questionGroup = questionGroup
+    convenience init(questionGroupCaretaker: QuestionGroupCaretaker) {
+        let questionGroup = questionGroupCaretaker.selectedQuestionGroup!
         let randomSource = GKRandomSource.sharedRandom()
-        guard let randomQuestions = randomSource.arrayByShufflingObjects(in: questionGroup.questions) as? [Question] else {  questions = [Question]()
-            return
-        }
-        self.questions = randomQuestions
-    }
-    
-    // MARK: - QuestionStrategy
-    var title: String {
-        return questionGroup.title
-    }
-    
-    func currentQuestion() -> Question {
-        return questions[questionIndex]
-    }
-    
-    func advanceToNextQuestion() -> Bool {
-        guard questionIndex + 1 < questions.count else {
-            return false
-        }
-        questionIndex += 1
-        return true
-    }
-    
-    func markQuestionCorrect(_ question: Question) {
-        correctCount += 1
-    }
-    
-    func markQuestionIncorrect(_ question: Question) {
-        incorrectCount += 1
-    }
-    
-    func questionIndexTitle() -> String {
-        return "\(questionIndex + 1)/\(questions.count)"
+        let questions = randomSource.arrayByShufflingObjects(in: questionGroup.questions) as! [Question]
+        self.init(questionGroupCaretaker: questionGroupCaretaker, questions: questions)
     }
 }
-
